@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id" data-bs-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Pendaftaran akun petugas SIGAP RSUD Kilisuci">
+  <title>Daftar Akun | SIGAP RSUD Kilisuci</title>
+  <link rel="icon" href="assets/img/logo-sigap.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <script src="js/tema-init.js"></script>
+</head>
+
+<body class="auth-page" data-page="daftar">
+  <main class="auth-wrapper">
+    <section class="auth-brand" aria-labelledby="judulBrand">
+      <div class="d-flex align-items-center gap-2">
+        <img src="assets/img/logo-sigap.svg" alt="Logo SIGAP" width="48" height="48">
+        <div>
+          <h2 id="judulBrand" class="h4 mb-0">KILISUCI SIGAP</h2>
+          <small>Pendaftaran Akun Petugas</small>
+        </div>
+      </div>
+      <div class="brand-points">
+        <p class="fs-5 fw-semibold mb-3">Satu akun untuk mencatat, memantau, dan menindaklanjuti aduan.</p>
+        <ul>
+          <li><i class="bi bi-person-badge"></i> Akun baru otomatis berperan sebagai <strong>User</strong>.</li>
+          <li><i class="bi bi-shield-check"></i> Admin menetapkan role (Admin, Kepala, Petugas, User) sesuai jabatan.</li>
+          <li><i class="bi bi-telephone"></i> Nomor telepon dipakai untuk notifikasi WhatsApp aduan kritis.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="auth-form-area">
+      <button class="btn btn-icon btn-tema auth-theme" type="button" aria-label="Ganti tema"><i class="bi bi-moon-stars"></i></button>
+
+      <article class="auth-card wide card-sg">
+        <header class="mb-4">
+          <h1 class="h3 mb-1">Daftar Akun Petugas</h1>
+          <p class="text-muted-sg mb-0">Lengkapi data diri Anda. Kolom bertanda <span class="wajib">*</span> wajib diisi.</p>
+        </header>
+
+        <form id="formDaftar" novalidate>
+          <div class="row g-3">
+            <div class="col-12">
+              <label for="regNama" class="form-label">Nama Petugas <span class="wajib">*</span></label>
+              <input type="text" class="form-control" id="regNama" placeholder="Nama lengkap beserta gelar" autocomplete="name">
+              <div class="invalid-feedback" id="regNama-error"></div>
+            </div>
+            <div class="col-md-6">
+              <label for="regUnit" class="form-label">Lokasi Unit Kerja <span class="wajib">*</span></label>
+              <select class="form-select" id="regUnit"></select>
+              <div class="invalid-feedback" id="regUnit-error"></div>
+            </div>
+            <div class="col-md-6">
+              <label for="regJabatan" class="form-label">Jabatan <span class="wajib">*</span></label>
+              <select class="form-select" id="regJabatan"></select>
+              <div class="invalid-feedback" id="regJabatan-error"></div>
+              <div class="form-hint mt-1" id="infoSaranRole" aria-live="polite"></div>
+            </div>
+            <div class="col-md-6">
+              <label for="regTelp" class="form-label">Nomor Telepon (WhatsApp) <span class="wajib">*</span></label>
+              <input type="tel" class="form-control" id="regTelp" placeholder="08xxxxxxxxxx" autocomplete="tel">
+              <div class="invalid-feedback" id="regTelp-error"></div>
+            </div>
+            <div class="col-md-6">
+              <label for="regEmail" class="form-label">Email <span class="wajib">*</span></label>
+              <input type="email" class="form-control" id="regEmail" placeholder="nama@contoh.com" autocomplete="email">
+              <div class="invalid-feedback" id="regEmail-error"></div>
+            </div>
+            <div class="col-md-6">
+              <label for="regPassword" class="form-label">Kata Sandi <span class="wajib">*</span></label>
+              <input type="password" class="form-control" id="regPassword" placeholder="Minimal 6 karakter" autocomplete="new-password">
+              <div class="invalid-feedback" id="regPassword-error"></div>
+            </div>
+            <div class="col-md-6">
+              <label for="regPassword2" class="form-label">Ulangi Kata Sandi <span class="wajib">*</span></label>
+              <input type="password" class="form-control" id="regPassword2" placeholder="Ketik ulang kata sandi" autocomplete="new-password">
+              <div class="invalid-feedback" id="regPassword2-error"></div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary w-100 mt-4"><i class="bi bi-person-plus"></i> Daftar</button>
+        </form>
+
+        <!-- Ringkasan pendaftaran (diisi JavaScript dengan textContent) -->
+        <section id="ringkasanDaftar" class="ringkasan card-sg mt-4" hidden aria-live="polite">
+          <h2 class="h6"><i class="bi bi-check-circle-fill text-success"></i> Pendaftaran berhasil</h2>
+          <dl id="isiRingkasanDaftar"></dl>
+          <a href="login.html" class="btn btn-primary btn-sm mt-3">Masuk sekarang</a>
+        </section>
+
+        <p class="text-center mt-4 mb-0">Sudah punya akun? <a href="login.html" class="fw-semibold">Masuk</a></p>
+      </article>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+
+</html>

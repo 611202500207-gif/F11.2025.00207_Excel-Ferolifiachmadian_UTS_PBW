@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id" data-bs-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Data aduan dan tindak lanjut SIGAP RSUD Kilisuci">
+  <title>Data &amp; Tindak Lanjut | SIGAP RSUD Kilisuci</title>
+  <link rel="icon" href="assets/img/logo-sigap.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <script src="js/tema-init.js"></script>
+</head>
+
+<body data-page="data">
+  <header class="app-header sticky-top">
+    <nav class="navbar navbar-expand-lg app-navbar" aria-label="Navigasi utama">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+          <img src="assets/img/logo-sigap.svg" alt="Logo SIGAP" width="36" height="36">
+          <span class="brand-text"><strong>SIGAP</strong><small>RSUD Kilisuci</small></span>
+        </a>
+        <div class="d-flex align-items-center gap-2 order-lg-last">
+          <button class="btn btn-icon btn-tema" type="button" aria-label="Ganti tema"><i class="bi bi-moon-stars"></i></button>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuUtama" aria-controls="menuUtama" aria-expanded="false" aria-label="Buka menu">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="menuUtama">
+          <ul class="navbar-nav mx-lg-auto gap-lg-1">
+            <li class="nav-item"><a class="nav-link" href="index.html" data-nav="home"><i class="bi bi-house-door"></i> Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="aduan.html" data-nav="aduan"><i class="bi bi-pencil-square"></i> Buat Aduan</a></li>
+            <li class="nav-item"><a class="nav-link" href="data.html" data-nav="data"><i class="bi bi-clipboard-data"></i> Data &amp; Tindak Lanjut</a></li>
+            <li class="nav-item"><a class="nav-link" href="profil.html" data-nav="profil"><i class="bi bi-person-circle"></i> Profil</a></li>
+          </ul>
+          <div class="nav-user d-flex align-items-center gap-2 me-lg-2">
+            <a href="profil.html" class="user-chip">
+              <span class="avatar" id="navAvatar"></span>
+              <span class="user-text"><span id="navNama" class="d-block fw-semibold small"></span><small id="navRole"></small></span>
+            </a>
+            <button id="btnLogout" class="btn btn-outline-danger btn-sm" type="button"><i class="bi bi-box-arrow-right"></i> Keluar</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="page-head d-flex justify-content-between align-items-end flex-wrap gap-3">
+      <div>
+        <h1>Data &amp; Tindak Lanjut</h1>
+        <p>Semua aduan yang tersimpan: menunggu respon, sedang ditindaklanjuti, dan selesai.</p>
+      </div>
+      <button class="btn btn-outline-primary" id="btnCSV" type="button"><i class="bi bi-download"></i> Unduh CSV</button>
+    </section>
+
+    <div class="alert alert-info small" role="note" data-role="User">
+      <i class="bi bi-info-circle"></i> Anda login sebagai <strong>User</strong>: dapat melihat laporan, tetapi tidak dapat merespon atau menyelesaikan aduan.
+    </div>
+
+    <section class="card-sg" aria-labelledby="judulData">
+      <h2 id="judulData" class="visually-hidden">Tabel data aduan</h2>
+
+      <!-- Filter status (chip) -->
+      <div class="chip-row mb-3" id="chipStatus" role="group" aria-label="Filter status">
+        <button class="chip active" type="button" data-status="">Semua <span data-jumlah="semua">0</span></button>
+        <button class="chip" type="button" data-status="Menunggu Respon">Menunggu <span data-jumlah="Menunggu Respon">0</span></button>
+        <button class="chip" type="button" data-status="Direspon">Direspon <span data-jumlah="Direspon">0</span></button>
+        <button class="chip" type="button" data-status="Selesai">Selesai <span data-jumlah="Selesai">0</span></button>
+      </div>
+
+      <!-- Filter pencarian & prioritas -->
+      <form class="filter-bar mb-3" id="formFilter" role="search">
+        <div class="filter-search">
+          <label for="cari" class="form-label">Cari</label>
+          <input type="search" class="form-control" id="cari" placeholder="No. aduan, nama pengadu, unit, deskripsi...">
+        </div>
+        <div class="filter-select">
+          <label for="filterPrioritas" class="form-label">Prioritas</label>
+          <select class="form-select" id="filterPrioritas">
+            <option value="">Semua</option>
+            <option>Kritis</option>
+            <option>Sedang</option>
+            <option>Ringan</option>
+          </select>
+        </div>
+        <div class="filter-select">
+          <label for="urutan" class="form-label">Urutkan</label>
+          <select class="form-select" id="urutan">
+            <option value="terbaru">Terbaru</option>
+            <option value="sla">Batas SLA terdekat</option>
+            <option value="terlama">Terlama</option>
+          </select>
+        </div>
+      </form>
+
+      <table class="table table-sg table-stack">
+        <thead>
+          <tr>
+            <th scope="col">No. Aduan</th>
+            <th scope="col">Pengadu</th>
+            <th scope="col">Unit &amp; Sumber</th>
+            <th scope="col">Prioritas</th>
+            <th scope="col">Status</th>
+            <th scope="col">SLA / Waktu Respon</th>
+            <th scope="col">Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="tabelAduan"></tbody>
+      </table>
+      <p class="form-hint mb-0 mt-2" id="infoJumlah"></p>
+    </section>
+  </main>
+
+  <!-- ===== Modal detail aduan ===== -->
+  <div class="modal fade" id="modalDetail" tabindex="-1" aria-labelledby="judulDetail" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="judulDetail">Detail Aduan</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body">
+          <dl class="detail-list" id="isiDetail"></dl>
+          <figure class="mt-3 mb-0" id="wadahFotoDetail" hidden>
+            <img id="fotoDetail" class="img-fluid rounded border" alt="Bukti foto aduan">
+            <figcaption class="form-hint">Bukti foto</figcaption>
+          </figure>
+          <h3 class="h6 mt-4">Riwayat Penanganan</h3>
+          <ol class="timeline" id="timelineDetail"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Modal respon ===== -->
+  <div class="modal fade" id="modalRespon" tabindex="-1" aria-labelledby="judulRespon" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <form class="modal-content" id="formRespon" novalidate>
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="judulRespon"><i class="bi bi-chat-dots"></i> Beri Respon</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body">
+          <p class="small text-muted-sg" id="infoRespon"></p>
+          <label for="catatanRespon" class="form-label">Catatan Tindak Lanjut <span class="wajib">*</span></label>
+          <textarea class="form-control" id="catatanRespon" rows="4" placeholder="Contoh: Kepala ruangan sudah menemui keluarga pasien dan..."></textarea>
+          <div class="invalid-feedback" id="catatanRespon-error"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+          <button type="submit" class="btn btn-primary"><i class="bi bi-send"></i> Simpan Respon</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== Modal selesai ===== -->
+  <div class="modal fade" id="modalSelesai" tabindex="-1" aria-labelledby="judulSelesai" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <form class="modal-content" id="formSelesai" novalidate>
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="judulSelesai"><i class="bi bi-check2-circle"></i> Tandai Selesai</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body">
+          <p class="small text-muted-sg" id="infoSelesai"></p>
+          <label for="catatanSelesai" class="form-label">Catatan Penyelesaian <span class="form-hint">(Opsional)</span></label>
+          <textarea class="form-control" id="catatanSelesai" rows="3" placeholder="Contoh: Pengadu sudah dihubungi dan menerima penjelasan."></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+          <button type="submit" class="btn btn-success"><i class="bi bi-check2-all"></i> Selesai</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="app-footer">
+    <div class="container footer-inner">
+      <span>&copy; <span class="tahun-ini">2026</span> Tim Humas &amp; Pengaduan Masyarakat RSUD Kilisuci</span>
+      <span>SIGAP · Sistem Integrasi Gerak Cepat Aduan Pasien</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/data.js"></script>
+</body>
+
+</html>
