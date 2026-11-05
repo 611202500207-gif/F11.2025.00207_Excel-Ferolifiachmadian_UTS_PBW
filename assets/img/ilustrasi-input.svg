@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="Ilustrasi mencatat aduan">
+  <circle cx="160" cy="92" r="70" fill="#dbe7ff"/>
+  <rect x="118" y="22" width="84" height="146" rx="14" fill="#1e293b"/>
+  <rect x="124" y="32" width="72" height="126" rx="8" fill="#ffffff"/>
+  <rect x="132" y="44" width="40" height="7" rx="3.5" fill="#2563eb"/>
+  <rect x="132" y="60" width="56" height="10" rx="4" fill="#e2e8f0"/>
+  <rect x="132" y="76" width="56" height="10" rx="4" fill="#e2e8f0"/>
+  <rect x="132" y="92" width="26" height="14" rx="4" fill="#fee2e2"/>
+  <rect x="162" y="92" width="26" height="14" rx="4" fill="#fef3c7"/>
+  <rect x="132" y="112" width="56" height="20" rx="4" fill="#e2e8f0"/>
+  <rect x="132" y="138" width="56" height="12" rx="6" fill="#2563eb"/>
+  <circle cx="232" cy="52" r="18" fill="#0d9488"/>
+  <path d="M224 52l6 6 11-12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="62" y="110" width="44" height="30" rx="8" fill="#22c55e"/>
+  <path d="M72 140l-6 10 14-10z" fill="#22c55e"/>
+  <circle cx="74" cy="125" r="3" fill="#fff"/><circle cx="84" cy="125" r="3" fill="#fff"/><circle cx="94" cy="125" r="3" fill="#fff"/>
+</svg>

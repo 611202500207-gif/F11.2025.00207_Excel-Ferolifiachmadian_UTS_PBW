@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="Ilustrasi dashboard monitoring">
+  <circle cx="160" cy="92" r="70" fill="#d5f2ef"/>
+  <rect x="62" y="30" width="196" height="118" rx="12" fill="#1e293b"/>
+  <rect x="70" y="38" width="180" height="102" rx="6" fill="#ffffff"/>
+  <rect x="80" y="48" width="44" height="22" rx="5" fill="#dbe7ff"/>
+  <rect x="130" y="48" width="44" height="22" rx="5" fill="#dcfce7"/>
+  <rect x="180" y="48" width="60" height="22" rx="5" fill="#fee2e2"/>
+  <rect x="84" y="108" width="14" height="24" rx="3" fill="#2563eb"/>
+  <rect x="104" y="94" width="14" height="38" rx="3" fill="#0d9488"/>
+  <rect x="124" y="100" width="14" height="32" rx="3" fill="#2563eb"/>
+  <rect x="144" y="84" width="14" height="48" rx="3" fill="#0d9488"/>
+  <circle cx="206" cy="110" r="20" fill="none" stroke="#e2e8f0" stroke-width="8"/>
+  <path d="M206 90a20 20 0 1 1-19 26" fill="none" stroke="#16a34a" stroke-width="8" stroke-linecap="round"/>
+  <rect x="140" y="148" width="40" height="12" fill="#1e293b"/>
+  <rect x="120" y="158" width="80" height="8" rx="4" fill="#1e293b"/>
+  <circle cx="262" cy="38" r="16" fill="#dc2626"/>
+  <rect x="260" y="28" width="4" height="12" rx="2" fill="#fff"/><circle cx="262" cy="45" r="2.4" fill="#fff"/>
+</svg>

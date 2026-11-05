@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="Ilustrasi tindak lanjut selesai">
+  <circle cx="160" cy="92" r="70" fill="#dcfce7"/>
+  <rect x="104" y="26" width="112" height="140" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <rect x="136" y="18" width="48" height="16" rx="6" fill="#2563eb"/>
+  <circle cx="126" cy="60" r="9" fill="#16a34a"/><path d="M121 60l4 4 7-8" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="142" y="55" width="60" height="9" rx="4" fill="#e2e8f0"/>
+  <circle cx="126" cy="90" r="9" fill="#16a34a"/><path d="M121 90l4 4 7-8" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="142" y="85" width="52" height="9" rx="4" fill="#e2e8f0"/>
+  <circle cx="126" cy="120" r="9" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <rect x="142" y="115" width="60" height="9" rx="4" fill="#e2e8f0"/>
+  <rect x="120" y="140" width="80" height="14" rx="7" fill="#16a34a"/>
+  <circle cx="236" cy="132" r="22" fill="#0d9488"/>
+  <path d="M226 132l7 7 13-14" fill="none" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
